@@ -176,42 +176,152 @@ body{
     }
 }
 main{
-    flex:1;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+}
+.mapaSection{
+    flex: 1;
+    min-height: 0;
 }
 .mapaClase{
     background-color: var(--surface-200);
-    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.40), 0 4px 16px 0px rgba(0, 0, 0, 0.30);
-    margin: var(--space-1) var(--space-6);
+    height: 100%
 }
 .mapaSection{
-    margin: var(--space-8);
     display: grid;
-    grid: auto auto / 2fr 1fr;
+    grid: 10vh auto / 2fr 1fr;
     .mapaBusqueda{
-        height: 10vh;
-        display: flex;
+        height: calc(100% - 1px);
+        display: grid;
+        grid-template-columns: 1fr 12fr 2fr;
         align-items: center;
+        border-bottom: 1px solid var(--line);
         p{
+            text-align: center;
             font-family: var(--font-sans);
         }
-        #busqueda{
-            width: 80%;
+        #mapaResultados{
+            text-align: center;
+            font-size: 1.3vw;
+        }
+        #mapaBusqueda{
+            width: 100%;
             height: 80%;
             filter: opacity(.30);
             border-style: none;
             border-radius: 0%;
-        }
-        #busqueda:focus{
-            border-radius: 0%;
-            background-color: #237050;
         }
     }
     .mapaFiltros{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(0, 1fr);
+        .mapBtnFilter{
+            border: none;
+            background-color: var(--surface-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid var(--line);
+            font-family: var(--font-sans);
+            border-bottom: 3px solid var(--borde);
+            #mapaIndicador{
+                font-size: 2.5vw;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            div{
+                h4{
+                    font-size: 1.5vw;
+                }
+                p{
+                    font-size: 1.2vw; 
+                }
+            }
+        }
+    }
+    .mapaInfo{
+        font-family: var(--font-sans);
+        border: 1px solid var(--line);
+        border-right: none;
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        div{
+            width: 100%;
+        }
+        #mapaImagen{
+            background-color: var(--surface-200);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            img{
+                object-fit: cover;
+                height: 35vh;
+            }
+        }
+        .mapaBarraEstado{
+            h4{
+                border-top: 2px solid var(--line);
+            }
+        }
+        #mapaDrawBarra{
+            display: flex;
+            justify-content: center;
+            min-height: 16px;
+            #mapaBarraCentrada{
+                width: 90%;
+                position: relative;
+                #mapaBarra{
+                    z-index: 0;
+                    position: absolute;
+                    height: 16px;
+                    background-color: var(--line);
+                }
+                #mapaRellenoBarra{
+                    z-index: 1;
+                    position: absolute;
+                    width: 100%;
+                    top: 2px;
+                    height: 12px;
+                    background-color: #B3261E;
+                }
+                .mapaLinea{
+                    z-index: 2;
+                    position: absolute;
+                    width: 2px;
+                    height: 16px;
+                    background-color: var(--line);
+                }
+                #linea2{
+                    left: 33.33%;
+                }
+                #linea3{
+                    left: 66.66%;
+                }
+                #linea4{
+                    left: 100%;
+                }
+            }
+        }
+        #mapaBarraIndicadores{
+            display: flex;
+            justify-content: right;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--line);
+            div{
+                display: flex;
+                font-family: var(--font-mono);
+                font-size: small;
+                filter: opacity(.5);
+                justify-content: space-between;
+                width: 95%;
+            }
+        }
     }
 }
+
 footer{
     position: relative;
     border-top: dashed 3px var(--accent);
