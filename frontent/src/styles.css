@@ -197,12 +197,11 @@ main{
         grid-template-columns: 1fr 12fr 2fr;
         align-items: center;
         border-bottom: 1px solid var(--line);
+        text-align: center;
         p{
-            text-align: center;
             font-family: var(--font-sans);
         }
         #mapaResultados{
-            text-align: center;
             font-size: 1.3vw;
         }
         #mapaBusqueda{
@@ -248,9 +247,13 @@ main{
         display: flex;
         flex-direction: column; 
         align-items: center;
-        #mapaLugarTitulo{
+        .mapaLugarTitulo{
+            display: flex;
+            justify-content: center;
             h4{
-                font-size: 100vw;
+                margin: 10px 0px;
+                width: 90%;
+                font-size: 1.7vw;
             }
         }
         div{
@@ -268,8 +271,20 @@ main{
             }
         }
         .mapaBarraEstado{
-            h4{
+            #mapaInfoTexto{
                 border-top: 2px solid var(--line);
+                display: flex; 
+                flex-direction: column;
+                align-items: center;
+                h4{
+                    width: 90%;
+                }
+                p{
+                    width: 90%;
+                    font-size: x-large;
+                    font-weight: bold;
+                    color: var(--colorPorcentaje);
+                }
             }
         }
         #mapaDrawBarra{
@@ -288,10 +303,10 @@ main{
                 #mapaRellenoBarra{
                     z-index: 1;
                     position: absolute;
-                    width: 100%;
+                    width: var(--porcentaje);
                     top: 2px;
                     height: 12px;
-                    background-color: #B3261E;
+                    background-color: var(--colorPorcentaje);
                 }
                 .mapaLinea{
                     z-index: 2;
@@ -323,6 +338,33 @@ main{
                 filter: opacity(.5);
                 justify-content: space-between;
                 width: 95%;
+            }
+        }
+        .blockInfo{
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            div{
+                position: relative;
+                display: flex;
+                height: 10vh;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--surface-300);
+                border-left: 1px solid var(--line);
+                border-bottom: 2px solid var(--line);
+                h4{
+                    position: absolute;
+                    top: 1px;
+                    left: 2px;
+                    font-size: x-small;
+                    filter: opacity(.3);
+                }
+                p{
+                    font-family: var(--font-mono);
+                    font-size: 1.7vw;
+                    font-weight: bold;
+                }
             }
         }
     }

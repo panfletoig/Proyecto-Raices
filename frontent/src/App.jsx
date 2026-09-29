@@ -1,8 +1,14 @@
+import {SearchIcon, SparkleIcon, SparkleFillIcon} from '@primer/octicons-react'
 import {useState, useEffect, useCallback} from 'react'
 
 //------------------TEMPORAL
 const level = 2
-const porcentaje = 10
+const cardinfo = {
+    "porcentaje": 10,
+    "latitud": 10.102,
+    "longitud": 10.102,
+    "fecha": '29 sep 2026'
+}
 //------------------TEMPORAL
 
 
@@ -16,9 +22,9 @@ const tabs = [
 
 const MapFilters = [
     {"id":"All","filter":"Todo","range":"Puntos","number":1,"color":"#26495F"},
-    {"id":"high","filter":"Alto","range":"≥60%","number":2,"color":"#B3261E"},
-    {"id":"medium","filter":"Medio","range":"30-59%","number":3,"color":"#237050"},
-    {"id":"low","filter":"Okey","range": "<30%","number":4,"color":"#F2A900"},
+    {"id":"high","filter":"Alto","range":"≥66%","number":2,"color":"#B3261E"},
+    {"id":"medium","filter":"Medio","range":"33-59%","number":3,"color":"#F2A900"},
+    {"id":"low","filter":"Okey","range": "<33%","number":4,"color":"#237050"},
 ]
 
 export default function App(){
@@ -56,7 +62,7 @@ export default function App(){
                         </div>
                     </div>
                     <div className='login'>
-                        <button id='darkMode' label='darkMode' onClick={() => setIsDark(!isDark)}>{isDark ? '🌚' : '🌝'}</button>
+                        <button id='darkMode' label='darkMode' onClick={() => setIsDark(!isDark)}>{isDark ? (<SparkleFillIcon size={16} />): (<SparkleIcon size={16} />)}</button>
                         <button id='login' label='login'>Iniciar Sesión</button>
                     </div>
                 </div>
@@ -69,7 +75,7 @@ export default function App(){
                 <>
                 <section className='mapaSection'>
                     <article className='mapaBusqueda mapaClase'>
-                        <p>🔎</p>
+                        <p><SearchIcon size={24} /></p>
                         <input type="text" name="busqueda" id="mapaBusqueda" placeholder='Busqueda'/>
                         <p id='mapaResultados'>0 Resultados</p>
                     </article>
@@ -95,12 +101,14 @@ export default function App(){
                             <img src='https://tse3.mm.bing.net/th/id/OIP.7m8cTvaVwswtmZtFV5nhQwHaEI?w=300&h=180&c=7&r=0&o=7&pid=1.7&rm=3'/>
                         </div>
                         <div className='mapaBarraEstado'>
-                            <h4>Estado de calle</h4>
-                            <p id='mapaPorcentaje'>{porcentaje}%</p>
+                            <div id='mapaInfoTexto'>
+                                <h4>Daño general de calle</h4>
+                                <p id='mapaPorcentaje' style={{"--colorPorcentaje": cardinfo.porcentaje < 33.33 ? MapFilters[3].color : cardinfo.porcentaje < 66.66 ? MapFilters[2].color:MapFilters[1].color}}>{cardinfo.porcentaje}%</p>
+                            </div>
                             <div id='mapaDrawBarra'>
                                 <div id='mapaBarraCentrada'>
                                     <div id='mapaBarra'></div>
-                                    <div id='mapaRellenoBarra'></div>
+                                    <div id='mapaRellenoBarra' style={{ "--porcentaje": cardinfo.porcentaje + '%', "--colorPorcentaje": cardinfo.porcentaje < 33.33 ? MapFilters[3].color : cardinfo.porcentaje < 66.66 ? MapFilters[2].color:MapFilters[1].color}}></div>
                                     <div className='mapaLinea' id='linea1'></div>
                                     <div className='mapaLinea' id='linea2'></div>
                                     <div className='mapaLinea' id='linea3'></div>
@@ -116,10 +124,19 @@ export default function App(){
                                 </div>
                             </div>
                         </div>
-                        <div>
-                          t1
-                          t2
-                          t3
+                        <div className='blockInfo'>
+                            <div>
+                                <h4>Latitud</h4>
+                                <p>{cardinfo.latitud}</p>
+                            </div>
+                            <div>
+                                <h4>Longitud</h4>
+                                <p>{cardinfo.longitud}</p>
+                            </div>
+                            <div>
+                                <h4>fecha</h4>
+                                <p>{cardinfo.fecha}</p>
+                            </div>
                         </div>
                     </article>
                 </section>
