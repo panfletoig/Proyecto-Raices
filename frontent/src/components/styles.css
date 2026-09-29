@@ -1,0 +1,367 @@
+:root {
+  --surface-100: #f5f6f3;
+  --surface-200: #ffffff;
+  --surface-300: #e9ece6;
+  --line: #d3d7d0;
+  --ink: #15191c;
+  --ink-muted: #586068;
+  --brand: #1d3b4f;
+  --on-brand: #ffffff;
+  --accent: #f2a900;
+  --on-accent: #15191c;
+  --chrome: #1d3b4f;
+  --on-chrome: #ffffff;
+  --chrome-muted: #b8c9d4;
+  --chrome-line: #335a72;
+  --chrome-hover: #26495f;
+  --road: #ffffff;
+  --park: #d6e6d4;
+  --road-edge: #d4d9d0;
+  --water: #cfe1ea;
+  --ok: #237050;
+  --warn: #a15f00;
+  --danger: #b3261e;
+  --ok-soft: #e2f1e9;
+  --warn-soft: #fbefdc;
+  --danger-soft: #fbe5e3;
+  --focus: var(--brand);
+  --shadow-card: 0 1px 2px rgba(21,25,28,0.06), 0 4px 16px rgba(21,25,28,0.06);
+ 
+  /* Tipografía */
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+ 
+  /* Espaciado */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+ 
+  /* Radios */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-full: 9999px;
+  --onlyDark: hidden;
+ 
+  color-scheme: light;
+}
+[car-on="carOn"][dark-theme="dark"] {
+    --onlyDark: visible;
+}
+/* Modo oscuro: <html dark-theme="dark"> */
+[dark-theme="dark"] {
+  --surface-100: #111416;
+  --surface-200: #1a1e21;
+  --surface-300: #252a2e;
+  --line: #353b40;
+  --ink: #eef0ec;
+  --ink-muted: #a2a9ae;
+  --brand: #86b6d4;
+  --on-brand: #0d1a22;
+  --accent: #f4b52a;
+  --chrome: #0b1317;
+  --on-chrome: #eef0ec;
+  --chrome-muted: #9aa6ad;
+  --chrome-line: #253036;
+  --chrome-hover: #152026;
+  --road: #3d444a;
+  --park: #1f3027;
+  --road-edge: #2b3136;
+  --water: #1a2c38;
+  --ok: #5cc49a;
+  --warn: #f0a640;
+  --danger: #f07166;
+  --ok-soft: #16291f;
+  --warn-soft: #302414;
+  --danger-soft: #321b19;
+  --focus: var(--brand);
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.4);
+  color-scheme: dark;
+}
+*{
+    margin: 0;
+}
+body{
+    background-color: var(--surface-100);
+    #root{
+        min-height: 100vh; 
+        display: flex;
+        flex-direction: column;
+    }
+}
+.header{
+    background-color: var(--chrome);
+    font-family: var(--font-sans);
+    button{
+        border-style: none;
+        margin: 0 var(--space-1);
+        height: 30px;
+    }
+    .header-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: var(--chrome-line) solid 1px;
+        padding: var(--space-2) var(--space-6);
+    }
+    .title{
+        display: flex;
+        font-family: var(--font-sans);
+        color: white;
+        align-items: center;
+        img{
+            object-fit: cover;
+            margin-right: var(--space-2);
+        }
+        div{
+            line-height: 1;
+            h1 {
+                font-size: 20;
+            }
+            p {
+                font-family: var(--font-mono);
+                word-spacing: var(--space-4);
+                font-size: 16;
+            }
+        }
+    }
+    .login{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        button{
+            font-family: var(--font-mono);
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent);
+        }
+        #darkMode{
+            color: white;
+            width: 30px;
+            height: 30px;
+            background-color: var(--chrome);
+            border: 1px solid var(--chrome-line);
+        }
+        #darkMode:hover{
+            background-color: var(--chrome-hover);
+        }
+        #login:hover{
+            filter: brightness(1.06)
+        }
+    }
+    .tabs{
+        height: auto;
+        text-align: right;
+        margin: 0 var(--space-6);
+        .tab{
+            color: white;
+            font-weight: bold;
+            background-color: var(--chrome);
+        }
+        .tabActive{
+            background-color: var(--chrome);
+            color: white;
+            font-weight: bold;
+            border-bottom: var(--accent) 2px solid;
+        }
+        button:hover{
+            background-color: var(--chrome-line);
+        }
+    }
+}
+main{
+    flex:1;
+}
+.mapaClase{
+    background-color: var(--surface-200);
+    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.40), 0 4px 16px 0px rgba(0, 0, 0, 0.30);
+    margin: var(--space-1) var(--space-6);
+}
+.mapaSection{
+    margin: var(--space-8);
+    display: grid;
+    grid: auto auto / 2fr 1fr;
+    .mapaBusqueda{
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        p{
+            font-family: var(--font-sans);
+        }
+        #busqueda{
+            width: 80%;
+            height: 80%;
+            filter: opacity(.30);
+            border-style: none;
+            border-radius: 0%;
+        }
+        #busqueda:focus{
+            border-radius: 0%;
+            background-color: #237050;
+        }
+    }
+    .mapaFiltros{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(0, 1fr);
+    }
+}
+footer{
+    position: relative;
+    border-top: dashed 3px var(--accent);
+    background-color: var(--surface-300);
+    font-family: var(--font-sans);
+    font-size: small;
+    padding: var(--space-6);
+    p{
+        filter: opacity(.5);
+    }
+    .drawContainer{
+        position: absolute;
+        bottom: 65px;
+        left: 150px;
+        .draw50x50{
+            position: relative;
+            width: 50px;
+            height: 50px;
+            #ruedaTrasera{
+                position: absolute;
+                bottom: 0;
+                left: 5px;
+                width: 10px;
+                height: 10px;
+                border-radius: 100%;
+                background-color: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                div{
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 100%;
+                    background-color: white;
+                }
+            }
+            #ruedaDelantera{
+                position: absolute;
+                bottom: 0;
+                right: 4px;
+                width: 10px;
+                height: 10px;
+                border-radius: 100%;
+                background-color: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                div{
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 100%;
+                    background-color: white;
+                }
+            }
+            #rectangulo{
+                position: absolute;
+                bottom: 4px;
+                left: 0px;
+                border-radius: 4px 8px 0px 0px;
+                background-color: var(--chrome);
+                width: 50px;
+                height: 10px;
+            }
+            #cabina{
+                position: absolute;
+                bottom: -24px;
+                width: 100%;
+                height: 100%;
+                border-radius: 20px 20px 0px 0px;      
+                background-color: var(--chrome);
+                clip-path: polygon(7px 20px, 18px 5px, 32px 5px, 43px 20px);
+            }
+            #ventana1{
+                position: absolute;
+                bottom: -30px;
+                left: 9px;
+                width: 100%;
+                height: 100%;
+                background-color: var(--chrome-muted);
+                clip-path: polygon(15px 0px, 10px 0px, 0px 15px, 15px 10px);
+            }
+            #ventana2{
+                position: absolute;
+                bottom: -30px;
+                right: 9px;
+                width: 100%;
+                height: 100%;
+                background-color: var(--chrome-muted);
+                transform: scale(-1, 1);
+                clip-path: polygon(15px 0px, 10px 0px, 0px 15px, 15px 10px);
+            }
+            #luzDelantera{
+                position: absolute;
+                z-index: 1;
+                bottom: 10px;
+                right: 0px;
+                width: 6px;
+                height: 2px;
+                background-color: var(--accent);    
+                border-radius: 100%;
+            }
+            #luzTrasera{
+                position: absolute;
+                z-index: 1;
+                bottom: 10px;
+                left: 0px;
+                width: 3px;
+                height: 2px;
+                background-color: red;    
+                border-radius: 100%;
+            }
+            #luces{
+                visibility: var(--onlyDark);
+                z-index: -1;
+                right: -44px;
+                bottom: -1px;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: yellow;
+                filter: opacity(.50);
+                clip-path: polygon(20px 47px, 50px 47px, 0px 37px);
+            }
+            #bache{
+                visibility: var(--onlyDark);
+                right: -39px;
+                position: absolute;
+                bottom: -2px;
+                border-radius: 170% 170% 10px 10px;
+                background: gray;
+                width: 10px;
+                height: 5px;
+                display: flex;
+                justify-content: left;
+                filter: opacity(.90);
+                div{
+                    border-radius: 60%;
+                    background: black;
+                    width: 100%;
+                    height: 3px;
+                }
+            }
+            button{
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 23px;
+                background: none;
+                border: none;
+            }
+        }
+    }
+}
