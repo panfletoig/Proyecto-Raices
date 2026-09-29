@@ -88,7 +88,7 @@ export default function App(){
                         <h3>mapa</h3>
                     </article>
                     <article className='mapaInfo mapaClase'>
-                        <div class=''>
+                        <div className='mapaLugarTitulo'>
                             <h4>Lugar</h4>
                         </div>
                         <div id='mapaImagen'>
